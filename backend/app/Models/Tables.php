@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use App\Models\Dining_Session;
 use Illuminate\Database\Eloquent\Model;
 
 class Tables extends Model
@@ -11,4 +12,10 @@ class Tables extends Model
         'capacity',
         'status',
     ];
+
+    public function session()
+    {
+        return $this->hasOne(Dining_Session::class, 'table_id');
+    }
+
 }

@@ -1,6 +1,8 @@
 <?php
 namespace App\Models;
 
+use App\Models\Menu;
+use App\Models\Order;
 use Illuminate\Database\Eloquent\Model;
 
 $table->id();
@@ -19,4 +21,15 @@ class Order_Items extends Model
         'total',
         'notes',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class, 'order_number');
+
+    }
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class, 'menu_id');
+    }
 }
