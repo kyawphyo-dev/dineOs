@@ -2,6 +2,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Roles;
 use Database\Factories\UserFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -29,6 +30,11 @@ class User extends Authenticatable
         'remember_token',
 
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(Roles::class, 'role_id');
+    }
 
     /**
      * Get the attributes that should be cast.
